@@ -1,0 +1,31 @@
+<h1>Listing tasks</h1>
+
+<table>
+  <tr>
+    <th>Listtask</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>State</th>
+    <th>Priority</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tasks.each do |task| %>
+  <tr>
+    <td><%= task.listtask_id %></td>
+    <td><%= task.name %></td>
+    <td><%= task.description %></td>
+    <td><%= task.state %></td>
+    <td><%= task.priority %></td>
+    <td><%= link_to 'Show', task %></td>
+    <td><%= link_to 'Edit', edit_task_path(task) %></td>
+    <td><%= link_to 'Destroy', task, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Task', new_task_path %>

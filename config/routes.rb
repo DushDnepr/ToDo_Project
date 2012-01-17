@@ -1,4 +1,10 @@
 Todoproj::Application.routes.draw do
+  resources :listtasks
+
+  resources :tasks
+
+  root :to => 'listtasks#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
