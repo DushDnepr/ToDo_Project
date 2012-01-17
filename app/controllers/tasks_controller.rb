@@ -1,19 +1,22 @@
 class TasksController < ApplicationController
+  before_filter :load_list
+
   # GET /tasks
   # GET /tasks.json
-  def index
-    @tasks = Task.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @tasks }
-    end
-  end
+  #def index
+  #  @list = Listtask.find(params[:listtask_id])
+  #  @tasks = Task.find(params[@list])
+  #
+  #  respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.json { render json: @tasks }
+  #  end
+  #end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    @task = Task.find(params[:id])
+    # @task = Task.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +27,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   # GET /tasks/new.json
   def new
-    @task = Task.new
+    @task = @list.tasks.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +43,11 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(params[:task])
+    @task = @list.task.new(params[:task])
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to listtask_path, notice: 'Task was successfully created.' }
         format.json { render json: @task, status: :created, location: @task }
       else
         format.html { render action: "new" }
@@ -56,8 +59,6 @@ class TasksController < ApplicationController
   # PUT /tasks/1
   # PUT /tasks/1.json
   def update
-    @task = Task.find(params[:id])
-
     respond_to do |format|
       if @task.update_attributes(params[:task])
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
@@ -72,12 +73,19 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
-    @task = Task.find(params[:id])
+    @list = @task.listtask
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to tasks_url }
+      format.html { redirect_to listtask_path }
       format.json { head :ok }
     end
+  end
+
+  private
+
+  def load_list
+    @task = Task.find(params[:id]) if params[:id]
+    @list = Listtask.find(params[:listtask_id]) if params[:listtask_id]
   end
 end

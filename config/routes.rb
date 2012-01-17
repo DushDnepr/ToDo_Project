@@ -1,7 +1,8 @@
 Todoproj::Application.routes.draw do
-  resources :listtasks
 
-  resources :tasks
+  resources :listtasks do
+    resources :tasks
+  end
 
   root :to => 'listtasks#index'
 
