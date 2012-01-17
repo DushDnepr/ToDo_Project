@@ -14,7 +14,7 @@ class ListtasksController < ApplicationController
   # GET /listtasks/1.json
   def show
     @listtask = Listtask.find(params[:id])
-
+    @tasks = @listtask.tasks
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @listtask }

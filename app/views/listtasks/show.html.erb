@@ -11,12 +11,29 @@
 </p>
 
 <h2>Tasks:</h2>
-<%= @listtask.tasks.each do |task| %>
-    <%= task.name %> |
-    <%= task.description %>|
-    <%= task.state %> |
-    <%= task.priority %> |
-<% end %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>State</th>
+    <th>Priority</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.name %></td>
+        <td><%= task.description %></td>
+        <td><%= task.state %></td>
+        <td><%= task.priority %></td>
+        <td><%= link_to 'Show', listtask_task_path(@listtask,task) %></td>
+        <td><%= link_to 'Edit', edit_listtask_task_path(@listtask, task) %></td>
+        <td><%= link_to 'Destroy', listtask_task_path(task), confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+    <% end %>
+</table>
 
 <br />
 <%= link_to 'Edit', edit_listtask_path(@listtask) %> |
