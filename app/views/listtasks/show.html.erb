@@ -11,10 +11,10 @@
 </p>
 
 <h2>Tasks:</h2>
-<%= radio_button_tag :task, "state", "2" %> All <br />
-<%= radio_button_tag :task, "state", "0" %> Incompleted <br />
-<%= radio_button_tag :task, "state", "1" %> Complited <br />
-
+<%= link_to 'All', listtask_path %>
+<%= link_to 'Incomplited', listtask_path(:status => false) %>
+<%= link_to 'Complited', listtask_path(:status => true) %>
+<%=  %>
 <table>
   <tr>
     <th>Name</th>

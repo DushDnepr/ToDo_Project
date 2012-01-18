@@ -36,7 +36,8 @@ class ListtasksControllerTest < ActionController::TestCase
 
   test "should update listtask" do
     put :update, id: @listtask.to_param, listtask: @listtask.attributes
-    assert_redirected_to listtask_path(assigns(:listtask))
+    assert_redirected_to listtasks_path
+    #(assigns(:listtask))
   end
 
   test "should destroy listtask" do

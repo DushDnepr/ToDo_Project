@@ -14,7 +14,12 @@ class ListtasksController < ApplicationController
   # GET /listtasks/1.json
   def show
     @listtask = Listtask.find(params[:id])
-    @tasks = @listtask.tasks.order('priority')
+    if params[:status]
+      @tasks = @listtask.tasks.where('state = ?', (params[:status]=='true')). order('priority')
+    else
+      @tasks = @listtask.tasks.order('priority')
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @listtask }
@@ -80,4 +85,5 @@ class ListtasksController < ApplicationController
       format.json { head :ok }
     end
   end
+
 end
