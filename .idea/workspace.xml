@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e9abb86f-5f0c-488a-beee-77ac35ced645" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/tasks/index.html.erb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/todoproj.iml" afterPath="$PROJECT_DIR$/.idea/todoproj.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/listtasks_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/listtasks_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/tasks_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/tasks_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/listtask.rb" afterPath="$PROJECT_DIR$/app/models/listtask.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/listtasks/show.html.erb" afterPath="$PROJECT_DIR$/app/views/listtasks/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/tasks_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/tasks_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/task.rb" afterPath="$PROJECT_DIR$/app/models/task.rb" />
     </list>
     <ignored path="todoproj.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,7 +30,35 @@
     <favorites_list name="todoproj" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="listtask.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/listtask.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="36" selection-start="115" selection-end="115" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="task.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/task.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="2" selection-start="260" selection-end="260" vertical-scroll-proportion="0.23622048">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="numericality.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p0@todolist/gems/activemodel-3.1.3/lib/active_model/validations/numericality.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="96" column="0" selection-start="3657" selection-end="3657" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -54,7 +77,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/app/models/task.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/tasks/new.html.erb" />
         <option value="$PROJECT_DIR$/app/views/tasks/_form.html.erb" />
@@ -63,9 +85,10 @@
         <option value="$PROJECT_DIR$/app/views/tasks/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/views/listtasks/show.html.erb" />
         <option value="$PROJECT_DIR$/test/functional/tasks_controller_test.rb" />
-        <option value="$PROJECT_DIR$/app/models/listtask.rb" />
         <option value="$PROJECT_DIR$/app/controllers/tasks_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/listtasks_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/listtask.rb" />
+        <option value="$PROJECT_DIR$/app/models/task.rb" />
       </list>
     </option>
   </component>
@@ -131,6 +154,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="todoproj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="todoproj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -453,14 +494,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="30" width="1364" height="553" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3422256" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3422256" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -517,11 +558,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/tasks/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p0@todolist/gems/actionpack-3.1.3/lib/action_view/helpers/form_tag_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="355" column="10" selection-start="18422" selection-end="18422" vertical-scroll-proportion="0.0" />
@@ -602,23 +638,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/listtasks/edit.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/listtask.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="32" selection-start="32" selection-end="32" vertical-scroll-proportion="0.0">
+        <state line="3" column="36" selection-start="115" selection-end="115" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p0@todolist/gems/activemodel-3.1.3/lib/active_model/validations/numericality.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="0" selection-start="3657" selection-end="3657" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/task.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/listtasks/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="6" column="2" selection-start="260" selection-end="260" vertical-scroll-proportion="0.23622048">
           <folding />
         </state>
       </provider>
