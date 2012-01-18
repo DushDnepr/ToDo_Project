@@ -1,18 +1,6 @@
 class TasksController < ApplicationController
   before_filter :load_list
 
-  # GET /tasks
-  # GET /tasks.json
-  #def index
-  #  @list = Listtask.find(params[:listtask_id])
-  #  @tasks = Task.find(params[@list])
-  #
-  #  respond_to do |format|
-  #     format.html # index.html.erb
-  #     format.json { render json: @tasks }
-  #  end
-  #end
-
   # GET /tasks/1
   # GET /tasks/1.json
   def show
@@ -43,7 +31,7 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = @list.tasks.create_with(params[:task])
+    @task = @list.tasks.new(params[:task])
 
     respond_to do |format|
       if @task.save

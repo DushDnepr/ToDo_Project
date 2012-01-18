@@ -5,11 +5,11 @@ class TasksControllerTest < ActionController::TestCase
     @task = tasks(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:tasks)
-  end
+  #test "should get index" do
+  #  get :index
+  #  assert_response :success
+  #  assert_not_nil assigns(:tasks)
+  #end
 
   test "should get new" do
     get :new
@@ -21,7 +21,7 @@ class TasksControllerTest < ActionController::TestCase
       post :create, task: @task.attributes
     end
 
-    assert_redirected_to task_path(assigns(:task))
+    assert_redirected_to task_path(asssigns(:task))
   end
 
   test "should show task" do
@@ -36,7 +36,7 @@ class TasksControllerTest < ActionController::TestCase
 
   test "should update task" do
     put :update, id: @task.to_param, task: @task.attributes
-    assert_redirected_to task_path(assigns(:task))
+    assert_redirected_to listtask_task_path(assigns(:task))
   end
 
   test "should destroy task" do
@@ -44,6 +44,6 @@ class TasksControllerTest < ActionController::TestCase
       delete :destroy, id: @task.to_param
     end
 
-    assert_redirected_to tasks_path
+    assert_redirected_to listtask_tasks_path
   end
 end

@@ -2,7 +2,7 @@ class ListtasksController < ApplicationController
   # GET /listtasks
   # GET /listtasks.json
   def index
-    @listtasks = Listtask.all
+    @listtasks = Listtask.order('name ASC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,7 @@ class ListtasksController < ApplicationController
   # GET /listtasks/1.json
   def show
     @listtask = Listtask.find(params[:id])
-    @tasks = @listtask.tasks
+    @tasks = @listtask.tasks.order('priority')
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @listtask }
@@ -60,7 +60,7 @@ class ListtasksController < ApplicationController
 
     respond_to do |format|
       if @listtask.update_attributes(params[:listtask])
-        format.html { redirect_to @listtask, notice: 'Listtask was successfully updated.' }
+        format.html { redirect_to listtasks_path, notice: 'Listtask was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

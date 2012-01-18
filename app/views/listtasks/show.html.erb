@@ -11,6 +11,10 @@
 </p>
 
 <h2>Tasks:</h2>
+<%= radio_button_tag :task, "state", "2" %> All <br />
+<%= radio_button_tag :task, "state", "0" %> Incompleted <br />
+<%= radio_button_tag :task, "state", "1" %> Complited <br />
+
 <table>
   <tr>
     <th>Name</th>
@@ -30,7 +34,7 @@
         <td><%= task.priority %></td>
         <td><%= link_to 'Show', listtask_task_path(@listtask,task) %></td>
         <td><%= link_to 'Edit', edit_listtask_task_path(@listtask, task) %></td>
-        <td><%= link_to 'Destroy', listtask_task_path(task), confirm: 'Are you sure?', method: :delete %></td>
+        <td><%= link_to 'Destroy', listtask_task_path(@listtask,task), confirm: 'Are you sure?', method: :delete %></td>
       </tr>
     <% end %>
 </table>
