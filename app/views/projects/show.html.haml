@@ -1,0 +1,20 @@
+%p#notice
+  = notice
+
+%p
+  %b Name:
+  = @project.name
+%p
+  %b Description:
+  = @project.description
+%ul
+  - @project.listtasks.each do |list|
+    %li
+      = link_to list.name, project_listtask_path(@project,list)
+      = link_to 'Edit', edit_project_listtask_path(@project,list)
+      = link_to 'Delete', project_listtask_path(@project,list), confirm: 'Are you sure?', method: :delete
+%p
+  = link_to 'Add list', new_project_listtask_path(@project)
+%br
+= link_to 'Edit', edit_project_path(@project) |
+= link_to 'Back', projects_path

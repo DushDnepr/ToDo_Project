@@ -1,0 +1,41 @@
+%p#notice
+  = notice
+
+%p
+  %b Name:
+  = @listtask.name
+
+%p
+  %b Description:
+  = @listtask.description
+
+%h2 Tasks:
+= link_to 'All', project_listtask_path
+= link_to 'Incomplited', project_listtask_path(:status => false)
+= link_to 'Complited', project_listtask_path(:status => true)
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th State
+    %th Priority
+    %th
+    %th
+    %th
+    - @tasks.each do |task|
+      %tr
+        %td= task.name
+        %td= task.description
+        %td= task.state
+        %td= task.priority
+        %td= link_to 'Show', project_listtask_task_path(@project, @listtask, task)
+        %td= link_to 'Edit', edit_project_listtask_task_path(@project, @listtask, task)
+        %td= link_to 'Destroy', project_listtask_task_path(@project, @listtask, task), confirm: 'Are you sure?', method: :delete
+
+%br
+= link_to 'Edit', edit_project_listtask_path(@project,@listtask)
+= link_to 'Back', project_path(@project)
+%br
+= link_to 'Add Task',new_project_listtask_task_path(@listtask.project_id, @listtask)
+

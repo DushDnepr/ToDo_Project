@@ -1,0 +1,26 @@
+%p#notice
+  = notice
+
+%p
+  %b Listtask:
+  = @task.listtask_id
+
+%p
+  %b Name:
+  = @task.name
+
+%p
+  %b Description:
+  = @task.description
+
+%p
+  %b State:
+  = @task.state
+
+%p
+  %b Priority:
+  = @task.priority
+
+
+= link_to 'Edit', edit_project_listtask_task_path(@project, @list, @task)
+= link_to 'Back', project_listtask_path(@project, @list)

@@ -7,7 +7,7 @@ class TasksController < ApplicationController
     # @task = Task.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
       format.json { render json: @task }
     end
   end
@@ -18,7 +18,7 @@ class TasksController < ApplicationController
     @task = @list.tasks.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
       format.json { render json: @task }
     end
   end
@@ -35,7 +35,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to listtask_path(@list), notice: 'Task was successfully created.' }
+        format.html { redirect_to project_listtask_path(@project, @list), notice: 'Task was successfully created.' }
         format.json { render json: @task, status: :created, location: @task }
       else
         format.html { render action: "new" }
@@ -49,7 +49,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to listtask_path(@list), notice: 'Task was successfully updated.' }
+        format.html { redirect_to project_listtask_path(@project, @list), notice: 'Task was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -65,7 +65,7 @@ class TasksController < ApplicationController
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to listtask_path }
+      format.html { redirect_to project_listtask_path(@project, @list) }
       format.json { head :ok }
     end
   end
@@ -75,5 +75,6 @@ class TasksController < ApplicationController
   def load_list
     @task = Task.find(params[:id]) if params[:id]
     @list = Listtask.find(params[:listtask_id]) if params[:listtask_id]
+    @project = Project.find(params[:project_id]) if params[:project_id]
   end
 end

@@ -1,11 +1,12 @@
 class ListtasksController < ApplicationController
+  before_filter :load_project_list
   # GET /listtasks
   # GET /listtasks.json
   def index
-    @listtasks = Listtask.order('name ASC')
+    @project.listtasks = Listtask.order('name ASC')
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.json { render json: @listtasks }
     end
   end
@@ -13,7 +14,6 @@ class ListtasksController < ApplicationController
   # GET /listtasks/1
   # GET /listtasks/1.json
   def show
-    @listtask = Listtask.find(params[:id])
     if params[:status]
       @tasks = @listtask.tasks.where('state = ?', (params[:status]=='true')). order('priority')
     else
@@ -21,7 +21,7 @@ class ListtasksController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
       format.json { render json: @listtask }
     end
   end
@@ -32,8 +32,8 @@ class ListtasksController < ApplicationController
     @listtask = Listtask.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @listtask }
+      format.html # new.html.haml
+      format.json { render json: @project.listtask }
     end
   end
 
@@ -45,12 +45,12 @@ class ListtasksController < ApplicationController
   # POST /listtasks
   # POST /listtasks.json
   def create
-    @listtask = Listtask.new(params[:listtask])
+    @listtask = @project.listtasks.create(params[:listtask])
 
     respond_to do |format|
       if @listtask.save
-        format.html { redirect_to @listtask, notice: 'Listtask was successfully created.' }
-        format.json { render json: @listtask, status: :created, location: @listtask }
+        format.html { redirect_to @project, notice: 'Listtask was successfully created.' }
+        format.json { render json: @project, status: :created, location: @project }
       else
         format.html { render action: "new" }
         format.json { render json: @listtask.errors, status: :unprocessable_entity }
@@ -61,11 +61,9 @@ class ListtasksController < ApplicationController
   # PUT /listtasks/1
   # PUT /listtasks/1.json
   def update
-    @listtask = Listtask.find(params[:id])
-
     respond_to do |format|
       if @listtask.update_attributes(params[:listtask])
-        format.html { redirect_to listtasks_path, notice: 'Listtask was successfully updated.' }
+        format.html { redirect_to project_listtask_path(@project, @listtask), notice: 'Listtask was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -77,13 +75,18 @@ class ListtasksController < ApplicationController
   # DELETE /listtasks/1
   # DELETE /listtasks/1.json
   def destroy
-    @listtask = Listtask.find(params[:id])
     @listtask.destroy
 
     respond_to do |format|
-      format.html { redirect_to listtasks_url }
+      format.html { redirect_to project_path(@project) }
       format.json { head :ok }
     end
   end
 
+  private
+
+  def load_project_list
+    @listtask = Listtask.find(params[:id]) if params[:id]
+    @project = Project.find(params[:project_id]) if params[:project_id]
+  end
 end
