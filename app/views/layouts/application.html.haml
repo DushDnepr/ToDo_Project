@@ -7,4 +7,9 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
+    #header ToDo-Proj
+    #auth_form
+      - if current_user
+        = "Logged in as #{current_user.email}"
+        = link_to "Log out", sessions_url, confirm: 'Are you sure?', method: :delete
     = yield

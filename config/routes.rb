@@ -6,7 +6,11 @@ Todoproj::Application.routes.draw do
     end
   end
 
-  root :to => 'projects#index'
+  resource :users
+  resource :sessions
+
+  root :to => 'sessions#new'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

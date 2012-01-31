@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = Project.where('user_id = ?', current_user.id)
 
     respond_to do |format|
       format.html # index.html.haml
@@ -41,6 +41,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
+    @project.user_id = current_user.id
 
     respond_to do |format|
       if @project.save
