@@ -11,8 +11,8 @@ class TasksControllerTest < ActionController::TestCase
   #  assert_not_nil assigns(:tasks)
   #end
 
-  test "should get new" do
-    get :new
+  test "should get ffnew" do
+    get :ffnew
     assert_response :success
   end
 

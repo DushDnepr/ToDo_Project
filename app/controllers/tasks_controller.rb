@@ -12,13 +12,13 @@ class TasksController < ApplicationController
     end
   end
 
-  # GET /tasks/new
-  # GET /tasks/new.json
+  # GET /tasks/ffnew
+  # GET /tasks/ffnew.json
   def new
     @task = @list.tasks.new
 
     respond_to do |format|
-      format.html # new.html.haml
+      format.html # _login_form.html.haml
       format.json { render json: @task }
     end
   end

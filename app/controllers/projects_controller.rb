@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.where('user_id = ?', current_user.id)
+    @projects = Project.where('user_id = ?', current_user.id).order('name')
 
     respond_to do |format|
       format.html # index.html.haml
@@ -21,13 +21,13 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # GET /projects/new
-  # GET /projects/new.json
+  # GET /projects/ffnew
+  # GET /projects/ffnew.json
   def new
     @project = Project.new
 
     respond_to do |format|
-      format.html # new.html.haml
+      format.html # _login_form.html.haml
       format.json { render json: @project }
     end
   end

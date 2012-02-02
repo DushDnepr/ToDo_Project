@@ -26,13 +26,13 @@ class ListtasksController < ApplicationController
     end
   end
 
-  # GET /listtasks/new
-  # GET /listtasks/new.json
+  # GET /listtasks/ffnew
+  # GET /listtasks/ffnew.json
   def new
     @listtask = Listtask.new
 
     respond_to do |format|
-      format.html # new.html.haml
+      format.html # _login_form.html.haml
       format.json { render json: @project.listtask }
     end
   end

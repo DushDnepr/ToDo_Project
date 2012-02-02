@@ -2,14 +2,21 @@
 %html
   %head
     %title
-      Todoproj
+      ToDo-Proj
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    #header ToDo-Proj
-    #auth_form
-      - if current_user
-        = "Logged in as #{current_user.email}"
-        = link_to "Log out", sessions_url, confirm: 'Are you sure?', method: :delete
-    = yield
+    .container
+      #header ToDo-Proj
+      #auth_form
+        - if current_user
+          = "Logged in as #{current_user.email}"
+          = link_to "Log out", sessions_url, confirm: 'Are you sure?', method: :delete
+        %p#notice
+          = notice
+      #content
+        - if current_user || new_users_path
+          = yield
+      #footer
+        %h3 2012
