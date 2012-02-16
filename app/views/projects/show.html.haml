@@ -1,20 +1,29 @@
 %p#notice
   = notice
 
+%h1 Listtasks in #{@project.name}
 %p
-  %b Name:
-  = @project.name
-%p
-  %b Description:
-  = @project.description
-%ul
+  = link_to 'Add listtask', new_project_listtask_path(@project)
+%table
+  %tr
+    %th Name
+    %th Description
+    %th Count Task in listtask
+
   - @project.listtasks.each do |list|
-    %li
-      = link_to list.name, project_listtask_path(@project,list)
-      = link_to 'Edit', edit_project_listtask_path(@project,list)
-      = link_to 'Delete', project_listtask_path(@project,list), confirm: 'Are you sure?', method: :delete
-%p
-  = link_to 'Add list', new_project_listtask_path(@project)
+    %tr
+      %td{:style => "width: 25%"}
+        = link_to list.name, project_listtask_path(@project,list)
+        |
+        %span
+          = link_to 'Edit', edit_project_listtask_path(@project,list)
+          |
+          = link_to 'Delete', project_listtask_path(@project,list), confirm: 'Are you sure?', method: :delete
+      %td{:style =>"width: 60%"}= list.description
+      %td{:style =>"width: 15%"}
+        = count_task_in_listtask(list)
 %br
-= link_to 'Edit', edit_project_path(@project) |
-= link_to 'Back', projects_path
+= link_to 'Edit project', edit_project_path(@project)
+|
+= link_to 'Back to projects', projects_path
+

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to root_url, :notice => "Registered"
+      redirect_to :root, :notice => "Registered"
     else
       render "new"
     end

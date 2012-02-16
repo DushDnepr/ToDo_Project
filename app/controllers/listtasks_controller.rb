@@ -1,15 +1,5 @@
 class ListtasksController < ApplicationController
   before_filter :load_project_list
-  # GET /listtasks
-  # GET /listtasks.json
-  def index
-    @project.listtasks = Listtask.order('name ASC')
-
-    respond_to do |format|
-      format.html # index.html.haml
-      format.json { render json: @listtasks }
-    end
-  end
 
   # GET /listtasks/1
   # GET /listtasks/1.json
@@ -26,8 +16,8 @@ class ListtasksController < ApplicationController
     end
   end
 
-  # GET /listtasks/ffnew
-  # GET /listtasks/ffnew.json
+  # GET /listtasks/new
+  # GET /listtasks/new.json
   def new
     @listtask = Listtask.new
 

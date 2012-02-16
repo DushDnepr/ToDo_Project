@@ -21,13 +21,13 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # GET /projects/ffnew
-  # GET /projects/ffnew.json
+  # GET /projects/new
+  # GET /projects/new.json
   def new
     @project = Project.new
 
     respond_to do |format|
-      format.html # _login_form.html.haml
+      format.html
       format.json { render json: @project }
     end
   end
@@ -81,4 +81,5 @@ class ProjectsController < ApplicationController
       format.json { head :ok }
     end
   end
+
 end

@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to projects_path, :notice => "Logged in!"
     else
       flash.now.alert = "Invalid email or password"
-      render "login_form"
+      render "sessions/new"
     end
   end
 

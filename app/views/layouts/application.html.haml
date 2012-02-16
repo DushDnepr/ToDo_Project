@@ -1,4 +1,4 @@
-!!! 5
+!!!
 %html
   %head
     %title
@@ -7,16 +7,26 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    .container
-      #header ToDo-Proj
-      #auth_form
-        - if current_user
-          = "Logged in as #{current_user.email}"
-          = link_to "Log out", sessions_url, confirm: 'Are you sure?', method: :delete
-        %p#notice
-          = notice
-      #content
-        - if current_user || new_users_path
-          = yield
-      #footer
-        %h3 2012
+    #wrap
+      #main
+        #header
+          .inner
+            .container
+              %table
+                %tr
+                  %th
+                    %h1 Todoproj
+                  %th
+                    #login-bar.pull-right
+                      - if current_user
+                        = "Logged in as #{current_user.email}"
+                        |
+                        = link_to "Log out", sessions_url, confirm: 'Are you sure?', method: :delete
+        .container
+          - if !current_user
+            Please login or register
+          =yield
+    #footer
+      .inner
+        .container
+          %p 2012

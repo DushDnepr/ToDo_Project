@@ -1,10 +1,6 @@
-#log_form
-  =form_tag sessions_path do
-    .field
-      = label_tag :email
-      = text_field_tag :email, params[:email]
-      = label_tag :password
-      = password_field_tag :password
-      = submit_tag "Log in"
+=form_tag sessions_path do
   %p
-    = link_to "Register", :controller => "users", :action => "new"
+    = email_field_tag :email, params[:email], :class => 'medium', :placeholder => 'e-mail'
+    = password_field_tag :password, nil, :class => 'medium', :placeholder => 'password'
+    = submit_tag "Log in", :class => 'btn success'
+= button_to "Register", {:controller => "users", :action => "new"}, :method => :get, :class => 'btn danger'

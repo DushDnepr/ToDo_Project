@@ -1,25 +1,24 @@
 %h1 Listing projects
+= link_to 'New Project', new_project_path
+%br
 
 %table
   %tr
     %th Name
     %th Description
-    %th
-    %th
-    %th
+    %th Count Listtask in project
 
   - @projects.each do |project|
     %tr
-      %td
-        = project.name
-      %td
+      %td{:style =>"width: 25%"}
+        = link_to project.name, project
+        %br
+        %span
+          = link_to 'Edit', edit_project_path(project)
+          |
+          = link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete
+      %td{:style =>"width: 60%"}
         = project.description
-      %td
-        = link_to 'Show', project
-      %td
-        = link_to 'Edit', edit_project_path(project)
-      %td
-        = link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete
-<br />
+      %td{:style =>"width: 15%"}
+        = count_listtask_in_project(project)
 
-= link_to 'New Project', new_project_path
