@@ -5,7 +5,7 @@ class ListtasksController < ApplicationController
   # GET /listtasks/1.json
   def show
     if params[:status]
-      @tasks = @listtask.tasks.where('state = ?', (params[:status]=='true')). order('priority')
+      @tasks = @listtask.tasks.where('state = ?', params[:status]). order('priority')
     else
       @tasks = @listtask.tasks.order('priority')
     end
@@ -39,9 +39,10 @@ class ListtasksController < ApplicationController
 
     respond_to do |format|
       if @listtask.save
-        format.html { redirect_to @project, notice: 'Listtask was successfully created.' }
-        format.json { render json: @project, status: :created, location: @project }
+        format.html { redirect_to project_listtask_path(@project, @listtask), notice: 'Listtask was successfully created.' }
+        format.json { render json: project_listtask_path(@project, @listtask), status: :created, location: @listtask }
       else
+        flash[:error] = "Name of listtask can't be blank'"
         format.html { render action: "new" }
         format.json { render json: @listtask.errors, status: :unprocessable_entity }
       end
@@ -56,6 +57,7 @@ class ListtasksController < ApplicationController
         format.html { redirect_to project_listtask_path(@project, @listtask), notice: 'Listtask was successfully updated.' }
         format.json { head :ok }
       else
+        flash[:error] = "Name of listtask can't be blank"
         format.html { render action: "edit" }
         format.json { render json: @listtask.errors, status: :unprocessable_entity }
       end
@@ -68,7 +70,7 @@ class ListtasksController < ApplicationController
     @listtask.destroy
 
     respond_to do |format|
-      format.html { redirect_to project_path(@project) }
+      format.html { redirect_to project_path(@project), notice: "Listtask was successfully deleted" }
       format.json { head :ok }
     end
   end

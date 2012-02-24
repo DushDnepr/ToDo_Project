@@ -12,8 +12,8 @@ class TasksController < ApplicationController
     end
   end
 
-  # GET /tasks/ffnew
-  # GET /tasks/ffnew.json
+  # GET /tasks/new
+  # GET /tasks/new.json
   def new
     @task = @list.tasks.new
 

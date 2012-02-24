@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration
       t.integer :listtask_id
       t.string :name
       t.text :description
-      t.boolean :state
+      t.enum :state
       t.integer :priority
 
       t.timestamps

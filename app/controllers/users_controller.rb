@@ -6,10 +6,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      redirect_to :root, :notice => "Registered"
+    user = User.new(params[:user])
+    if user.save
+      session[:user_id] = user.id
+      redirect_to projects_path, :notice => "Registered"
     else
+      flash[:error] = "Invalid email or password"
       render "new"
     end
   end

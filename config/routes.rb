@@ -9,6 +9,8 @@ Todoproj::Application.routes.draw do
   resource :users
   resource :sessions
 
+  match 'sessions/destroy' => 'sessions#destroy'
+
   root :to => 'sessions#new'
 
 

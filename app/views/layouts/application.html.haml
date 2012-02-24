@@ -12,21 +12,20 @@
         #header
           .inner
             .container
-              %table
-                %tr
-                  %th
-                    %h1 Todoproj
-                  %th
-                    #login-bar.pull-right
-                      - if current_user
-                        = "Logged in as #{current_user.email}"
-                        |
-                        = link_to "Log out", sessions_url, confirm: 'Are you sure?', method: :delete
+              %h1{:style => 'text-align: center'} Todoproj
+              .pull-right
+                - if current_user
+                  = "Logged in as #{current_user.email}"
+                  |
+                  = link_to "Log out", sessions_url, confirm: 'Are you sure?', method: :delete
         .container
-          - if !current_user
-            Please login or register
+          .flash
+            - if flash[:notice]
+              .alert-message.info= flash[:notice]
+            - if flash[:error]
+              .alert-message.danger= flash[:error]
           =yield
     #footer
       .inner
         .container
-          %p 2012
+          %h3{:style => 'text-align: center'} 2012

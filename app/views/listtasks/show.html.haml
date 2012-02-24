@@ -1,41 +1,46 @@
-%p#notice
-  = notice
-
-%p
-  %b Name:
-  = @listtask.name
-
-%p
-  %b Description:
-  = @listtask.description
-
+.info
+  %span.label.success Project ->
+  %big= link_to @listtask.project.name, project_path(@project)
+  |
+  %span.label.success Listtask ->
+  %big #{@listtask.name}
 %h2 Tasks:
+%br
+%span.label.info
+  = link_to 'Add Task',new_project_listtask_task_path(@listtask.project_id, @listtask)
+%br
+%br
+Show
 = link_to 'All', project_listtask_path
-= link_to 'Incomplited', project_listtask_path(:status => false)
-= link_to 'Complited', project_listtask_path(:status => true)
-
+|
+= link_to 'New', project_listtask_path(:status => 'new')
+|
+= link_to 'In work', project_listtask_path(:status => 'in_work')
+|
+= link_to 'Completed', project_listtask_path(:status => 'completed')
+%br
+%br
 %table
   %tr
     %th Name
     %th Description
     %th State
     %th Priority
-    %th
-    %th
-    %th
     - @tasks.each do |task|
       %tr
-        %td= task.name
+        %td
+          = link_to task.name, project_listtask_task_path(@project, @listtask, task)
+          %br
+          = link_to 'Edit', edit_project_listtask_task_path(@project, @listtask, task)
+          |
+          = link_to 'Destroy', project_listtask_task_path(@project, @listtask, task), confirm: 'Are you sure?', method: :delete
         %td= task.description
         %td= task.state
         %td= task.priority
-        %td= link_to 'Show', project_listtask_task_path(@project, @listtask, task)
-        %td= link_to 'Edit', edit_project_listtask_task_path(@project, @listtask, task)
-        %td= link_to 'Destroy', project_listtask_task_path(@project, @listtask, task), confirm: 'Are you sure?', method: :delete
 
 %br
 = link_to 'Edit', edit_project_listtask_path(@project,@listtask)
+|
+= link_to 'Delete', project_listtask_path(@project,@listtask), confirm: 'Are you sure?', method: :delete
+|
 = link_to 'Back', project_path(@project)
-%br
-= link_to 'Add Task',new_project_listtask_task_path(@listtask.project_id, @listtask)
-

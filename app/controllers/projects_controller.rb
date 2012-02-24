@@ -48,6 +48,7 @@ class ProjectsController < ApplicationController
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else
+        flash[:error] = "Name of project can't be blank"
         format.html { render action: "new" }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
@@ -64,6 +65,7 @@ class ProjectsController < ApplicationController
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { head :ok }
       else
+        flash[:error] = "Name of project can't be blank"
         format.html { render action: "edit" }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
@@ -77,7 +79,7 @@ class ProjectsController < ApplicationController
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to projects_url }
+      format.html { redirect_to projects_url, notice: 'Project was successfully deleted' }
       format.json { head :ok }
     end
   end

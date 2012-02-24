@@ -1,9 +1,11 @@
-%p#notice
-  = notice
-
-%h1 Listtasks in #{@project.name}
-%p
+.info
+  %span.label.success Project ->
+  %big #{@project.name}
+%br
+%span.label.info
   = link_to 'Add listtask', new_project_listtask_path(@project)
+%br
+%br
 %table
   %tr
     %th Name
