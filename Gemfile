@@ -7,8 +7,6 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'bcrypt-ruby'
 gem 'nifty-generators'
-gem 'rb-inotify'
-gem 'libnotify'
 gem "enumerated_attribute"
 
 # Gems used only for assets and not required
@@ -26,7 +24,6 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'cucumber'
-  gem 'cucumber-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
 end
@@ -38,5 +35,5 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
-  gem 'guard-rspec'
+  gem 'cucumber-rails'
 end

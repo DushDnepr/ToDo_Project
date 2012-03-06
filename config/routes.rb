@@ -1,6 +1,9 @@
 Todoproj::Application.routes.draw do
 
+  resources :invites
+
   resources :projects do
+    resources :invites
     resources :listtasks do
       resources :tasks
     end

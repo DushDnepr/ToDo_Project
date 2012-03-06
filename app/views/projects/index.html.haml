@@ -7,7 +7,7 @@
     %th Name
     %th Description
     %th Count Listtask in project
-
+    %th User(s) in project
   - @projects.each do |project|
     %tr
       %td{:style =>"width: 25%"}
@@ -17,8 +17,14 @@
           = link_to 'Edit', edit_project_path(project)
           |
           = link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete
-      %td{:style =>"width: 60%"}
+      %td{:style =>"width: 40%"}
         = project.description
       %td{:style =>"width: 15%"}
         = count_listtask_in_project(project)
+      %td{:style =>"width: 20%"}
+        %p
+          - project.users.each do |user|
+            = user.email
+            = link_to "(drop)", project_invite_path(project,user.id), confirm: 'Are you sure?', method: :delete
+        = link_to "Invite user", new_project_invite_path(project)
 

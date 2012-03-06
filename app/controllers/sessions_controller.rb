@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
   skip_before_filter :require_login
 
   def new
+    if current_user
+      redirect_to projects_path
+    end
   end
 
   def create

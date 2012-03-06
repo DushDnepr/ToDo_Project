@@ -1,0 +1,6 @@
+= form_for [@project, @invite] do |f|
+  %p
+    =f.label :email
+    =f.text_field :email
+  .actions
+    = f.submit 'Invite'

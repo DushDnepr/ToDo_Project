@@ -37,14 +37,13 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
-  # POST /projects
-  # POST /projects.json
   def create
     @project = Project.new(params[:project])
     @project.user_id = current_user.id
 
     respond_to do |format|
       if @project.save
+        @invite_owner = Invite.create!(:user_id => @project.user_id, :project_id => @project.id, :role => :owner)
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else
