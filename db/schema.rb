@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20120227093305) do
 
-  create_table "invites", :force => true do |t|
+  create_table "invites", :id => false, :force => true do |t|
     t.integer  "user_id"
     t.integer  "project_id"
     t.string   "role"
@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(:version => 20120227093305) do
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.integer  "owner_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "user_id"
   end
 
   create_table "tasks", :force => true do |t|

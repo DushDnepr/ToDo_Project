@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates :password, :length => { :minimum => 5 }
 
-  #has_many :combinations
   has_many :invites
   has_many :projects, :through => :invites
 

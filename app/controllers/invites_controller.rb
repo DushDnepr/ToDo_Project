@@ -14,6 +14,7 @@ class InvitesController < ApplicationController
         render :new
       else
         @project.users << user
+        Notifier.invite(@project, user).deliver
         redirect_to projects_path, :notice => "#{user.email} is invited to the project"
       end
     else
